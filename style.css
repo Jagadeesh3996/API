@@ -1,0 +1,116 @@
+*{
+    font-family: sans-serif;
+    margin: 0px;
+    padding: 0px;
+    list-style: none;
+    text-decoration: none;
+}
+.sidebar{
+    position: fixed;
+    margin-left: -100%;
+    width: 250px;
+    height: 100%;
+    background-image: url(bg.jpg);
+    background-size: cover;
+    /* background: linear-gradient(65deg, red, orange,rgb(65, 65, 202),black); */
+    transition:all 0.5s;
+}
+.sidebar header{
+    font-size: 25px;
+    color: beige;
+    text-align: center;
+    background-color: rgb(181, 196, 43);
+    line-height: 70px;
+    user-select: none;
+    font-weight: 600;
+}
+.sidebar ul a{
+    display: block;
+    height: 100%;
+    width: 100%;
+    line-height: 65px;
+    font-size: 20px;
+    font-weight: 550;
+    color: rgb(9, 97, 19);
+    padding-left: 40px;
+    box-sizing: border-box;
+    border-bottom: 2px dotted rgb(53, 5, 137);
+    transition:all 0.5s;
+}
+ul li a:hover{
+    padding-left: 60px;
+    background-color: rgb(170, 105, 231);
+}
+#check{
+    display: none;
+}
+label #btn, label #cancel{
+    position: absolute;
+    cursor: pointer;
+    border-radius: 3px;
+}
+label #btn{
+    left: 20px;
+    top: 20px;
+    font-size: 35px;
+    color: whitesmoke;
+    padding: 6px 12px;
+    transition:all 0.5s;
+    border-radius: 10px;
+    border: 1px solid rgb(44, 167, 233);
+    background-color: rgb(52, 245, 56);
+}
+label #cancel{
+    z-index: 1;
+    left: -50px;
+    top: 17px;
+    font-size: 35px;
+    color: red;
+    padding: 4px 9px;
+    transition:all 0.5s;
+}
+#check:checked ~ .sidebar{
+    margin-left: 0%;
+}
+#check:checked ~ label #btn{
+    left: 250px;
+    opacity: 0;
+    pointer-events: none;
+}
+#check:checked ~ label #cancel{
+    left: 245px;
+}
+#check:checked ~ .body{
+    margin-left: 250px;
+}
+.bg{
+    background-image: url(bg.jpg);
+    background-position: center;
+    background-size: cover;
+    height: 100vh;
+    margin-left: 0px;
+    transition: all 0.5s;
+    color: black;
+    text-align: center;
+}
+h1{
+    padding-top: 200px;
+    font-size: 50px;
+}
+p{
+    font-size: 25px;
+    padding: 20px 100px;
+    font-weight: 600px;
+}
+#check:checked ~ .bg{
+    margin-left: 250px;
+}
+
+@media screen and (max-width : 800px){
+    h1{
+        font-size: 35px;
+    }
+    p{
+        padding: 10px 20px;
+    }
+}
