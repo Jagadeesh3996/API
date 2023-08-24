@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <title>Add Info</title>
+
+    <!-- CSS -->
+
+    <style>
+        *{
+            margin: 0px;
+            font-family: sans-serif;
+        }
+        .main{
+            background-image: url(bg1.jpg);
+            background-size: cover;
+            height: 100vh;
+        }
+        .container-fluid{
+            text-align: center;
+            background-color: rgba(200, 0, 255, 0.482);
+            padding: 10px;
+        }
+        .input{
+            text-align: center;
+            padding: 10px;
+            font-size: 20px;
+            font-weight: 600;
+        }
+        .input label{
+            width: 120px;
+            text-align: right;
+        }
+        #posts{
+            margin: 10px 20px;
+            color: white;
+            background-image: url(bg.jpg);
+            background-size: cover;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- HTML -->
+
+    <main class="main">
+        <div class="container-fluid">
+            <h1 style="font-weight: 800;"> Create User Information</h1>
+        </div>
+        
+        <div class="input">
+
+        <form action="#">
+            <label for="Name">Name : </label>
+            <input type="text" id="createName" placeholder="Name" required><br><br>
+            
+            <label for="Uname">User name : </label>
+            <input type="text" id="createUname" placeholder="User name" required><br><br>
+            
+            <label for="Email">Email : </label>
+            <input type="text" id="createEmail" placeholder="Email" required><br><br>
+            
+            <label for="Phone">Phone : </label>
+            <input type="number" id="createPhone" placeholder="Ph number" required><br><br>
+            
+            <label for="Website">Website : </label>
+            <input type="text" id="createWebsite" placeholder="Website" required><br><br>
+                       
+            <button class="btn btn-outline-primary" style="font-weight: 800;" onclick="createPost()">Create</button>
+        </form>
+        </div>
+        
+        <div id="posts" class="container"></div>
+    </main>
+
+    <!-- Js -->
+
+    <script>
+        function createPost() {
+            const createName = document.getElementById('createName').value;
+            const createUname = document.getElementById('createUname').value;
+            const createEmail = document.getElementById('createEmail').value;
+            const createPhone = document.getElementById('createPhone').value;
+            const createWebsite = document.getElementById('createWebsite').value;
+
+            const newPost = {
+                name : createName,
+                username : createUname,
+                email : createEmail,
+                phone : createPhone,
+                website : createWebsite,
+            };
+
+            fetch('https://jsonplaceholder.typicode.com/users', {
+                method: 'POST',
+                body: JSON.stringify(newPost),
+                headers: {
+                    'Content-type': 'application/json; charset=UTF-8',
+                },
+            })
+            .then(response => response.json())
+            .then(data => {
+                console.log('Post created:', data);
+                const postsDiv = document.getElementById('posts');
+                const postDiv = document.createElement('div');
+                postDiv.classList.add('post');
+                postDiv.innerHTML = `<br><strong>Name:</strong> ${data.name}<br><strong>User name:</strong> ${data.username}<br><strong>Email:</strong> ${data.email}<br><strong>Phone:</strong> ${data.phone}<br><strong>Website:</strong> ${data.website}<br><strong>ID:</strong> ${data.id}<br><strong>Successfully Created</strong> <br><br>`;
+                postsDiv.appendChild(postDiv);
+            })
+            .catch(error => console.error('Error:', error));
+        }
+    </script>
+
+</body>
+</html>
