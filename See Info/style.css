@@ -1,0 +1,28 @@
+*{
+    margin: 0px;
+    padding: 0px;
+    font-family: sans-serif;
+}
+.main{
+    background-image: url(bgm.jpg);
+    background-size: cover;
+    height: 100vh;
+}
+.container-fluid{
+    text-align: center;
+    background-color: rgba(207, 126, 85, 0.597);
+    padding: 10px;
+}
+.input{
+    text-align: center;
+    padding: 20px;
+    font-size: 20px;
+    font-weight: 800;
+    color: white;
+}
+#posts{
+    margin: 10px 20px;
+    color: white;
+    background-image: url(bg.jpg);
+    background-size: cover;
+}
